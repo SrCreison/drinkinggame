@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baralho do Perigo - Jogo de Beber Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        .card {
+            background-color: #2d3748;
+            border: 1px solid #4a5568;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        .card-inner {
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        .card-back {
+            transform: rotateY(180deg);
+        }
+        .player-list-item.current-player {
+            background-color: #4c51bf;
+            color: white;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div id="join-screen" class="w-full max-w-sm text-center">
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-2">Baralho do Perigo</h1>
+        <p class="text-indigo-400 mb-8">O jogo de beber online mais "perigoso".</p>
+        <div class="space-y-4">
+            <input type="text" id="player-name-input" placeholder="Digite seu nome" class="w-full px-4 py-3 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <button id="join-game-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-md transition duration-300 text-lg">
+                Entrar no Jogo
+            </button>
+        </div>
+    </div>
+
+    <div id="game-screen" class="hidden w-full max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+            
+            <!-- Coluna da Área de Jogo (Aparece primeiro no mobile) -->
+            <div class="w-full md:w-2/3 flex flex-col items-center order-1 md:order-2">
+                <div id="turn-indicator" class="text-lg sm:text-xl mb-4 h-8 font-semibold text-center"></div>
+
+                <!-- A Carta -->
+                <div id="card-container" class="w-full max-w-md h-72 sm:h-80 perspective-1000 mb-4">
+                    <div id="card" class="card relative w-full h-full rounded-xl shadow-2xl">
+                        <div class="card-inner w-full h-full">
+                            <!-- Frente da Carta (Baralho) -->
+                            <div class="card-front absolute w-full h-full flex flex-col items-center justify-center bg-gray-700 rounded-xl border-4 border-indigo-500 p-4">
+                                <h2 class="text-3xl sm:text-4xl font-bold text-indigo-300 text-center">PERIGO</h2>
+                                <p class="text-gray-400 mt-2">Compre uma carta</p>
+                            </div>
+                            <!-- Verso da Carta (Revelada) -->
+                            <div id="card-content" class="card-back absolute w-full h-full p-6 sm:p-8 flex flex-col items-center justify-center bg-gray-800 rounded-xl border-2 border-yellow-400">
+                                <h3 id="card-title" class="text-2xl sm:text-3xl font-bold text-yellow-300 mb-4 text-center"></h3>
+                                <p id="card-description" class="text-base sm:text-lg text-center"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botão de Comprar -->
+                <button id="draw-card-btn" class="w-full max-w-xs bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-lg transition duration-300 shadow-lg disabled:bg-gray-600 disabled:cursor-not-allowed text-lg">
+                    Comprar Carta
+                </button>
+            </div>
+
+            <!-- Coluna de Jogadores (Aparece em segundo no mobile) -->
+            <div class="w-full md:w-1/3 bg-gray-800 p-4 rounded-lg shadow-lg order-2 md:order-1 max-h-48 md:max-h-full overflow-y-auto">
+                <h2 class="text-2xl font-bold mb-4 border-b border-gray-700 pb-2">Jogadores</h2>
+                <ul id="player-list" class="space-y-2">
+                    <!-- Itens de jogador serão gerados aqui -->
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Biblioteca cliente do Socket.IO -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Seu script customizado do lado do cliente -->
+    <script src="client.js"></script>
+</body>
+</html>
