@@ -11,20 +11,25 @@
             font-family: 'Poppins', sans-serif;
             background-color: #1a202c;
             color: #e2e8f0;
-            /* Garante que palavras longas quebrem e não estourem o layout */
             word-break: break-word;
         }
+        /* O elemento que gira agora também é o grid container */
         .card-inner {
+            position: relative;
+            width: 100%;
             transform-style: preserve-3d;
             transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .card.flipped .card-inner {
             transform: rotateY(180deg);
         }
-        /* Esconde o verso da carta quando virada */
+        /* As faces da carta */
         .card-face {
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
+            /* As faces ocupam a mesma célula no grid */
+            grid-column: 1 / 1;
+            grid-row: 1 / 1;
         }
         .card-back {
             transform: rotateY(180deg);
@@ -39,8 +44,8 @@
 <body class="flex items-center justify-center min-h-screen p-4">
 
     <div id="join-screen" class="w-full max-w-sm text-center">
-        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-2">Não sei o que por aqui</h1>
-        <p class="text-indigo-400 mb-8">Risco de coma alcólico".</p>
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-2">Sem ideias</h1>
+        <p class="text-indigo-400 mb-8">Risco de coma alcólico.</p>
         <div class="space-y-4">
             <input type="text" id="player-name-input" placeholder="Digite seu nome" class="w-full px-4 py-3 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
             <button id="join-game-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-md transition duration-300 text-lg">
@@ -56,23 +61,20 @@
             <div class="w-full md:w-2/3 flex flex-col items-center order-1 md:order-2">
                 <div id="turn-indicator" class="text-lg sm:text-xl mb-4 h-8 font-semibold text-center"></div>
 
-                <!-- A Carta (Estrutura refeita com CSS Grid) -->
+                <!-- A Carta (Estrutura Simplificada e Corrigida) -->
                 <div id="card-container" class="w-full max-w-md perspective-1000 mb-4">
-                    <div id="card" class="card relative w-full">
-                        <div class="card-inner">
-                            <!-- Usamos um grid para sobrepor a frente e o verso.
-                                 O grid vai automaticamente ajustar a altura para caber o maior conteúdo (o verso com texto). -->
-                            <div class="grid">
-                                <!-- Verso da Carta (define a altura) -->
-                                <div id="card-content" class="card-face card-back col-start-1 row-start-1 w-full p-8 flex flex-col items-center justify-center bg-gray-800 rounded-xl border-2 border-yellow-400 min-h-[320px]">
-                                    <h3 id="card-title" class="text-2xl sm:text-3xl font-bold text-yellow-300 mb-4 text-center"></h3>
-                                    <p id="card-description" class="text-base sm:text-lg text-center"></p>
-                                </div>
-                                <!-- Frente da Carta (ocupa o mesmo espaço) -->
-                                <div class="card-face card-front col-start-1 row-start-1 w-full h-full flex flex-col items-center justify-center bg-gray-700 rounded-xl border-4 border-indigo-500 p-4">
-                                    <h2 class="text-3xl sm:text-4xl font-bold text-indigo-300 text-center">PERIGO</h2>
-                                    <p class="text-gray-400 mt-2">Compre uma carta</p>
-                                </div>
+                    <div id="card" class="card">
+                        <!-- O elemento que gira é agora o grid que contém as duas faces -->
+                        <div class="card-inner grid">
+                            <!-- Verso da Carta -->
+                            <div id="card-content" class="card-face card-back w-full p-8 flex flex-col items-center justify-center bg-gray-800 rounded-xl border-2 border-yellow-400 min-h-[320px]">
+                                <h3 id="card-title" class="text-2xl sm:text-3xl font-bold text-yellow-300 mb-4 text-center"></h3>
+                                <p id="card-description" class="text-base sm:text-lg text-center"></p>
+                            </div>
+                            <!-- Frente da Carta -->
+                            <div class="card-face card-front w-full h-full flex flex-col items-center justify-center bg-gray-700 rounded-xl border-4 border-indigo-500 p-4">
+                                <h2 class="text-3xl sm:text-4xl font-bold text-indigo-300 text-center">PERIGO</h2>
+                                <p class="text-gray-400 mt-2">Compre uma carta</p>
                             </div>
                         </div>
                     </div>
