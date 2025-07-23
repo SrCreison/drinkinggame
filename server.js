@@ -41,12 +41,9 @@ const cardDeck = [
     { title: "Modo Silêncio", description: "Ninguém pode falar. O primeiro a falar, bebe. O silêncio é quebrado quando a próxima carta for comprada." },
     { title: "Contador de Histórias", description: "Comece uma história com uma frase. O próximo jogador adiciona uma frase. O primeiro a hesitar ou errar a história, bebe." },
     { title: "O Imitador", description: "Escolha outro jogador para imitar. Você deve agir como ele até sua próxima vez. Se sair do personagem, você bebe." },
-    { title: "Vikings", description: "Todos devem remar um barco viking. A qualquer momento, você pode levantar as mãos e gritar. Os jogadores à sua esquerda e direita devem continuar remando. O último a reagir corretamente, bebe." },
-    
-    // --- NOVAS CARTAS E VARIAÇÕES (COM EXEMPLOS) ---
     { title: "Categorias Temáticas", description: "Escolha uma categoria específica (ex: 'Marcas de carro com a letra F', 'Personagens de Simpsons'). Em círculo, cada um nomeia um item. O primeiro a falhar ou repetir, bebe." },
     { title: "Quem tem mais chance de...", description: "Faça uma pergunta 'Quem tem mais chance de...' (ex: '...ir para um reality show?'). O grupo aponta para alguém. A pessoa mais votada bebe." },
-    { title: "Eu Nunca... (Pesado)", description: "Diga algo pesado que você nunca fez (ex: 'Eu nunca fingi estar doente para faltar no trabalho'). Quem JÁ fez, bebe 2 doses." },
+    { title: "Eu Nunca... ", description: "Diga algo que você nunca fez (ex: 'Eu nunca fingi estar doente para faltar no trabalho'). Quem JÁ fez, bebe 2 doses." },
     { title: "O Filósofo", description: "Faça uma pergunta polêmica (ex: 'O ovo veio antes da galinha?'). Todos devem dar sua opinião. A pior resposta, na opinião da maioria, bebe." },
     { title: "Regra do Mindinho", description: "Até a sua próxima vez, todos só podem beber segurando o copo com o dedo mindinho levantado. Quem esquecer, bebe." },
     { title: "Piadista", description: "Conte uma piada. Se ninguém rir, você bebe. Se pelo menos uma pessoa rir, você escolhe duas pessoas para beberem." },
