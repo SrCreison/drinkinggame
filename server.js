@@ -1,29 +1,22 @@
 // server.js
-// Este é o núcleo do nosso jogo, lidando com toda a lógica e comunicação em tempo real.
-
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
-
+const path = require('path'); // Corrigido: Usar require para importar o módulo
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
-
 const PORT = process.env.PORT || 3000;
-
-// Serve os arquivos HTML, CSS e JS do diretório 'public'
-app.use(express.static('public'));
+const publicPath = path.join(__dirname, 'public');
+console.log(`[INFO] Servindo ficheiros estáticos a partir de: ${publicPath}`);
+app.use(express.static(publicPath));
 
 // --- Estado do Jogo ---
-// Vamos armazenar todos os dados do jogo na memória para simplificar.
 let players = [];
 let currentPlayerIndex = 0;
 let gameInProgress = false;
 let lastCard = null;
 
-// --- O "Baralho do Perigo" ---
-// É aqui que a mágica acontece. Adicione quantas cartas criativas,
-// engraçadas ou "perigosas" você conseguir imaginar!
 const cardDeck = [
     // Cartas Clássicas
     { title: "Social", description: "Todos bebem!" },
