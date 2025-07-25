@@ -21,7 +21,7 @@ const cardDeck = [
     // Cartas Clássicas
     { title: "Social", description: "Todos bebem!" },
     { title: "Cascata", description: "Todos começam a beber. Você não pode parar até que a pessoa que comprou a carta pare." },
-    { title: "Mestre das Regras", description: "Crie uma nova regra. A regra dura até que esta carta seja comprada novamente. Quem quebrá-la, bebe." },
+    { title: "Mestre das Regras", description: "Crie uma nova regra. A regra dura por um total de três rodadas. Quem quebrá-la, bebe." },
     { title: "Mestre das Perguntas", description: "Você é o Mestre das Perguntas até esta carta ser comprada novamente. Se alguém responder a uma pergunta sua, essa pessoa bebe." },
     { title: "Mestre do Dedão", description: "Você é o Mestre do Dedão. Quando você colocar seu dedão na mesa, todos os outros jogadores devem fazer o mesmo. O último a fazer, bebe." },
     { title: "Rima", description: "Diga uma palavra. O próximo jogador deve dizer uma palavra que rime. O primeiro a falhar, bebe." },
@@ -86,6 +86,16 @@ const cardDeck = [
     { title: "O Publicitário", description: "Escolha um objeto perto de você e crie um slogan para ele. Se o grupo achar criativo, você pode dar 3 doses. Se não, você bebe." },
     { title: "Narração Esportiva", description: "Você deve narrar as ações do próximo jogador como se fosse uma partida de futebol até a vez dele acabar. Se parar ou gaguejar, bebe." },
     { title: "O Entrevistador", description: "Faça 3 perguntas rápidas para um jogador. Ele deve responder com a primeira coisa que vier à mente. Se ele hesitar em qualquer uma, bebe." },
+    { title: "Palavra Proibida", description: "Escolha uma palavra comum (ex: 'beber', 'sim', 'não'). Quem disser, bebe."},
+    { title: "Torre de Copos", description: "Empilhe 3 copos descartáveis. Se derrubar, beba 2."},
+    { title: "Personagem Secreto", description: "Pense em um personagem famoso e responda perguntas do grupo com 'sim' ou 'não'. Se não adivinharem em 1 minuto, todos (incluindo você) bebem."},
+    { title: "Desafio do Equilíbrio", description: "Fique em um pé só com os olhos fechados por 15 segundos. Se cair, beba."},
+    { title: "Apresentador de TV", description: "Finja que está apresentando um programa de TV por 1 minuto. Se quebrar o personagem, beba."},
+    { title: "História Improvisada", description: "Conte uma história curta usando as palavras que os jogadores falarem aleatoriamente. Se travar ou repetir, beba."},
+    { title: "Verdade ou Mentira", description: "O jogador conta uma história, sendo verdade ou não. Ao final da história, os jogadores julgarão se é verdade ou mentira. Quem errar, bebe."},
+    { title: "Pergunta Proibida", description: "Escolha uma pergunta que ninguém pode fazer até o fim da rodada. Quem perguntar, bebe."},
+    { title: "Código Secreto", description: "Escolha um gesto secreto com outro jogador. Quando for feito em silêncio, todos devem copiar. O último a perceber, bebe."},
+    { title: "Mudo por 1 Rodada", description: "Você não pode falar até sua próxima vez. Se falar, beba."},
 ];
 
 
